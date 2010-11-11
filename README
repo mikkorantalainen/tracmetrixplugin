@@ -1,0 +1,7 @@
+History (2010-11-11):
+
+git svn clone http://trac-hacks.org/svn/tracmetrixplugin
+
+The original repository status at clone:
+git-svn-id: http://trac-hacks.org/svn/tracmetrixplugin@9167 7322e99d-02ea-0310-aa39-e9a107903beb
+
