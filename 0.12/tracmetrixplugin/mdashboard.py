@@ -235,7 +235,7 @@ def make_ticket_history_table(env, dates, sorted_events):
     for event in sorted_events:
         
         #Time in epoch time
-        date = datetime.fromtimestamp(event[0], utc).date()
+        date = to_datetime(event[0])
         
         #env.log.info("Event Date:%s:%s" % (date,event[1]))
         
@@ -444,21 +444,12 @@ class MDashboard(Component):
         
               
                 # Get first date that ticket enter the milestone
-                min_time = min(sorted_events)[0] #in Epoch Seconds
-                begin_date = datetime.fromtimestamp(min_time, utc).date() 
+                begin_date = to_datetime(min(sorted_events)[0]);                
                 
                 if milestone.completed != None:
                     end_date = milestone.completed        
                 else:
                     end_date = datetime.now(utc).date()
-                
-                #self.env.log.info("begindate: Timezone %s:%s, UTC:%s)" % \
-                #                  (req.tz,datetime.fromtimestamp(min_time, req.tz).date(), \
-                #                   datetime.fromtimestamp(min_time, utc).date())) 
-        
-                #self.env.log.info("enddate: UTC:%s" % (end_date,))
-    
-                
             
                 # this is array of date in numpy
                 numdates = drange(begin_date, end_date + timedelta(days=1), timedelta(days=1))
